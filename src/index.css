@@ -29,3 +29,12 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(148, 163, 184, 0.6);
 }
+
+@layer base {
+  html {
+    @apply bg-slate-50 dark:bg-slate-950;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
