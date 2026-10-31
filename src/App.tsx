@@ -46,6 +46,7 @@ import { StartLateModal } from './components/StartLateModal';
 import { StartLateRebuildResult } from './utils/startLate';
 import { CODMTimerModal } from './components/CODMTimer';
 import { registerServiceWorker, checkUpcomingBlockReminders } from './utils/reminders';
+import { AppFooter } from './components/AppFooter'; 
 
 export default function App() {
   // Splash screen state (shows on initial visit or preview)

@@ -18,6 +18,7 @@ import {
   Bell,
   ShieldCheck,
 } from 'lucide-react';
+import { AboutCard } from './AppFooter';
 import { Preferences, Category, DailyMission, AppDataExport } from '../types';
 import { calculateSleepStats, formatDisplayTime } from '../utils/time';
 import { StorageService } from '../utils/storage';
@@ -681,7 +682,11 @@ export const PreferencesView: React.FC<PreferencesViewProps> = ({
             <p className="text-xs text-slate-500 dark:text-slate-400">
               Customize which daily accomplishments count toward your core day score.
             </p>
-          </div>
+          </div>   
+                <AboutCard onBackup={handleExportJSON} />
+
+      /* Paste JSON Modal */
+             {/* Paste JSON Modal */}
           <button
             onClick={handleAddMission}
             className="flex items-center gap-1 text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline"
