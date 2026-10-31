@@ -1,0 +1,6 @@
+{
+  "name": "CodeWave Daily",
+  "description": "Adaptive routine and schedule management for developers. Ride the wave. Win the day.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

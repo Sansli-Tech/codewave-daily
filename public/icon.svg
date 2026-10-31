@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <!-- Dark navy rounded square base -->
+  <rect width="100" height="100" rx="22" fill="#0B1220"/>
+  
+  <!-- Subtle inner gradient sheen -->
+  <radialGradient id="navySheen" cx="30%" cy="25%" r="85%">
+    <stop offset="0%" stop-color="#141E34"/>
+    <stop offset="100%" stop-color="#0B1220"/>
+  </radialGradient>
+  <rect width="100" height="100" rx="22" fill="url(#navySheen)"/>
+  
+  <!-- Left Code Bracket "<" -->
+  <path d="M 32 33 L 18 50 L 32 67" 
+        fill="none" 
+        stroke="#38BDF8" 
+        stroke-width="7.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+        
+  <!-- Center Purple Wave -->
+  <path d="M 39 52 C 43 45, 47 45, 50 50 C 53 55, 57 55, 61 48" 
+        fill="none" 
+        stroke="#A855F7" 
+        stroke-width="7" 
+        stroke-linecap="round"/>
+        
+  <!-- Right Code Bracket ">" -->
+  <path d="M 68 33 L 82 50 L 68 67" 
+        fill="none" 
+        stroke="#38BDF8" 
+        stroke-width="7.5" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"/>
+</svg>
