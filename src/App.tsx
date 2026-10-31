@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import {
+import {import { AppFooter } from './components/AppFooter';
   ScheduleBlock,
   Category,
   InboxTask,
@@ -907,6 +907,10 @@ export default function App() {
           />
         )}
       </main>
+
+            </main>
+
+      <AppFooter />
 
       {/* Add / Edit Block Modal */}
       {isAddBlockOpen && (
