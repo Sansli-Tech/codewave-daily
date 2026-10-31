@@ -115,14 +115,38 @@ Output JSON Structure:
 }
 `;
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3.8-flash',
-      contents: message,
-      config: {
-        systemInstruction,
-        responseMimeType: 'application/json',
-      },
-    });
+    const models = [
+  process.env.GEMINI_MODEL || 'gemini-3.8-flash',
+  process.env.GEMINI_FALLBACK_MODEL,
+].filter(Boolean) as string[];
+
+const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
+let response;
+let lastError: any;
+
+outer: for (const model of models) {
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      response = await ai.models.generateContent({
+        model,
+        contents: message,
+        config: { systemInstruction, responseMimeType: 'application/json' },
+      });
+      break outer;
+    } catch (err: any) {
+      lastError = err;
+      const busy = /503|UNAVAILABLE|overloaded|high demand|429/i.test(String(err?.message));
+      if (!busy) throw err;
+      await sleep(1000 * 2 ** attempt);
+    }
+  }
+}
+
+if (!response) {
+  return res.status(503).json({
+    error: 'The AI Coach is busy right now 😅 Try again in a minute.',
+  });
+}
 
     const text = response.text || '{}';
     let parsedResult;
