@@ -68,19 +68,22 @@ export const PrivacyModal: React.FC<{ onClose: () => void }> = ({ onClose }) => 
   </div>
 );
 
+/** Centered footer, shown on every screen size. */
 export const AppFooter: React.FC = () => {
   const [showPrivacy, setShowPrivacy] = useState(false);
 
   return (
-    <footer className="hidden md:block mt-12 border-t border-slate-200 dark:border-slate-800">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-wrap items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
-        <div className="flex items-center gap-2.5 min-w-0">
-          <CodeWaveIcon size={24} />
-          <span className="font-semibold text-slate-700 dark:text-slate-200">{APP_NAME}</span>
-          <span className="hidden lg:inline">· {APP_TAGLINE}</span>
+    <footer className="mt-12 border-t border-slate-200 dark:border-slate-800">
+      <div className="max-w-3xl mx-auto px-4 py-8 flex flex-col items-center text-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+        {/* Brand */}
+        <div className="flex flex-col items-center gap-2">
+          <CodeWaveIcon size={36} />
+          <span className="text-sm font-bold text-slate-800 dark:text-slate-100">{APP_NAME}</span>
+          <span className="italic">{APP_TAGLINE}</span>
         </div>
 
-        <nav className="flex flex-wrap items-center gap-5" aria-label="Footer">
+        {/* Links */}
+        <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2" aria-label="Footer">
           {FEEDBACK_URL && (
             <a href={FEEDBACK_URL} target="_blank" rel="noopener noreferrer" className={linkClass}>
               <MessageSquare className="w-3.5 h-3.5" />
@@ -99,11 +102,17 @@ export const AppFooter: React.FC = () => {
           )}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <span className="font-mono">v{APP_VERSION}</span>
-          <span>·</span>
+        <p className="max-w-md leading-relaxed">
+          Your schedule stays on this device. AI Coach suggestions are powered by Google Gemini.
+        </p>
+
+        {/* Copyright */}
+        <div className="pt-4 w-full border-t border-slate-100 dark:border-slate-800/70 flex flex-col items-center gap-1">
           <span>
-            © {YEAR} <BrandCredit />
+            © {YEAR} <BrandCredit />. All rights reserved.
+          </span>
+          <span>
+            Built by <BrandCredit /> · <span className="font-mono">v{APP_VERSION}</span>
           </span>
         </div>
       </div>
@@ -113,6 +122,7 @@ export const AppFooter: React.FC = () => {
   );
 };
 
+/** About card for the bottom of Preferences on phones. */
 export const AboutCard: React.FC<{ onBackup: () => void }> = ({ onBackup }) => {
   const [showPrivacy, setShowPrivacy] = useState(false);
 
